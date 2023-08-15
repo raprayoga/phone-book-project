@@ -1,9 +1,9 @@
 // ./src/stories/button.js
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import React from "react"
+import PropTypes from "prop-types"
+import { css } from "@emotion/react"
+import styled from "@emotion/styled"
 
 const getVariantStyles = ({ primary = false }) =>
   primary
@@ -15,36 +15,36 @@ const getVariantStyles = ({ primary = false }) =>
         color: #333;
         background-color: transparent;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-      `;
+      `
 
-const getSizeStyles = ({ size = 'medium' }) => {
+const getSizeStyles = ({ size = "medium" }) => {
   switch (size) {
-    case 'small': {
+    case "small": {
       return css`
         font-size: 12px;
         padding: 10px 16px;
-      `;
+      `
     }
-    case 'large': {
+    case "large": {
       return css`
         font-size: 16px;
         padding: 12px 24px;
-      `;
+      `
     }
     default: {
       return css`
         font-size: 14px;
         padding: 11px 20px;
-      `;
+      `
     }
   }
-};
+}
 
 /**
  * Primary UI component for user interaction
  */
 const StyledButton = styled.button`
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   border: 0;
   border-radius: 3em;
@@ -59,9 +59,11 @@ const StyledButton = styled.button`
     css`
       background-color: ${backgroundColor};
     `}
-`;
+`
 
-export const Button = ({ label, ...rest }) => <StyledButton {...rest}>{label}</StyledButton>;
+export const Button = ({ label, ...rest }) => (
+  <StyledButton {...rest}>{label}</StyledButton>
+)
 
 Button.propTypes = {
   /**
@@ -75,7 +77,7 @@ Button.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
    */
@@ -84,11 +86,11 @@ Button.propTypes = {
    * Optional click handler
    */
   onClick: PropTypes.func,
-};
+}
 
 Button.defaultProps = {
   backgroundColor: null,
   primary: false,
-  size: 'medium',
+  size: "medium",
   onClick: undefined,
-};
+}
