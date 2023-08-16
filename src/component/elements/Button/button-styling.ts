@@ -48,8 +48,8 @@ const getVariantStyles = ({
   }
 }
 
-const getSizeStyles = ({ size, theme }: { size?: string; theme: any }) => {
-  switch (size) {
+const getSizeStyles = ({ sizes, theme }: { sizes?: string; theme: any }) => {
+  switch (sizes) {
     case "small": {
       return css`
         font-size: ${theme.font.sm};
@@ -65,8 +65,8 @@ const getSizeStyles = ({ size, theme }: { size?: string; theme: any }) => {
   }
 }
 
-const getSizeSvgStyles = ({ size }: { size?: string }) => {
-  switch (size) {
+const getSizeSvgStyles = ({ sizes }: { sizes?: string }) => {
+  switch (sizes) {
     case "small": {
       return css`
         height: 11px;
@@ -91,7 +91,7 @@ const spin = keyframes`
   }
 `
 
-export const StyledSvgLoading = styled.svg<{ size: string }>`
+export const StyledSvgLoading = styled.svg<{ sizes: string }>`
   display: inline;
   margin: auto;
   vertical-align: middle;

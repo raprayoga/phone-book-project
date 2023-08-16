@@ -7,7 +7,7 @@ export interface ButtonProps
   onClick: () => void
   isLoading?: boolean
   variant?: "primary" | "success" | "danger" | "warning" | "info" | "light"
-  size?: "small" | "large"
+  sizes?: "small" | "large"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -18,7 +18,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       children,
       variant = "primary",
-      size = "small",
+      sizes = "small",
       ...props
     },
     ref
@@ -32,13 +32,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         variant={variant}
         isdisabled={isdisabled}
-        size={size}
+        sizes={sizes}
         onClick={handleClick}
         {...props}
       >
         {isLoading ? (
           <StyledSvgLoading
-            size={size}
+            sizes={sizes}
             aria-hidden="true"
             role="status"
             viewBox="0 0 100 101"
