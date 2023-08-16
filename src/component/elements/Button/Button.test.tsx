@@ -8,11 +8,7 @@ describe("Render Button", () => {
   test("sould render button correctly", () => {
     const handleClick = jest.fn()
     const handleClickDisabled = jest.fn()
-    const { rerender } = render(
-      <Button onClick={handleClick} label={"ss"}>
-        {text}
-      </Button>
-    )
+    const { rerender } = render(<Button onClick={handleClick}>{text}</Button>)
 
     const buttonElement = screen.getByText(text)
     expect(buttonElement).toBeInTheDocument()
@@ -21,7 +17,7 @@ describe("Render Button", () => {
     expect(handleClick).toBeCalled()
 
     rerender(
-      <Button isdisabled onClick={handleClickDisabled} label={"sasa"}>
+      <Button isdisabled onClick={handleClickDisabled}>
         {text}
       </Button>
     )
