@@ -1,85 +1,13 @@
-import { css, keyframes } from "@emotion/react"
-import styled from "@emotion/styled"
 import React from "react"
-
-const getVariantStyles = (variant: string | undefined) => {
-  switch (variant) {
-    case "primary":
-      return css`
-        color: white;
-        background-color: #1ea7fd;
-      `
-    case "grey":
-      return css`
-        color: #333;
-        background-color: transparent;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-      `
-  }
-}
-
-const getSizeStyles = (size: string | undefined) => {
-  switch (size) {
-    case "small": {
-      return css`
-        font-size: 12px;
-        padding: 10px 16px;
-      `
-    }
-    case "large": {
-      return css`
-        font-size: 16px;
-        padding: 12px 24px;
-      `
-    }
-  }
-}
-
-const spin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`
-
-const StyledSvgLoading = styled.svg`
-  width: 60%;
-  height: 60%;
-  display: inline;
-  margin: auto;
-  vertical-align: middle;
-  color-white;
-  animation: ${spin} 1s linear infinite;
-`
-
-const StyledButton = styled.button<ButtonProps>`
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  border: 0;
-  border-radius: 3em;
-  cursor: pointer;
-  display: inline-block;
-  line-height: 1;
-  &:hover {
-    background-color: ${(props) =>
-      props.isdisabled || props.isLoading ? "" : "#ff8a00d1"};
-    cursor: ${(props) =>
-      props.isdisabled || props.isLoading ? "default" : "pointer"};
-  }
-
-  ${(props) => getVariantStyles(props.variant)}
-  ${(props) => getSizeStyles(props.size)}
-`
+import { StyledButton, StyledSvgLoading } from "./button-styling"
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isdisabled?: boolean
   onClick: () => void
   isLoading?: boolean
-  variant?: string
-  size?: string
+  variant?: "primary" | "success" | "danger" | "warning" | "info" | "light"
+  size?: "small" | "large"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -104,12 +32,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         variant={variant}
         isdisabled={isdisabled}
+        size={size}
         onClick={handleClick}
         {...props}
-        isLoading={isLoading}
       >
         {isLoading ? (
           <StyledSvgLoading
+            size={size}
             aria-hidden="true"
             role="status"
             viewBox="0 0 100 101"
