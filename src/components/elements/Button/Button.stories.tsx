@@ -64,7 +64,6 @@ export const Outline: Story = {
         {...args}
         onClick={action("onCLick!")}
         isOutline
-        variant="danger"
       >
         Button Disabled
       </Button>

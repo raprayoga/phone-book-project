@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import Input, { InputGroup, ChildLeft, ChildRight } from "./index"
-import Button from "../../elements/Button/index"
+import Button from "../Button/index"
 import { action } from "@storybook/addon-actions"
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 
