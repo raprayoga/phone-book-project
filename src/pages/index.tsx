@@ -1,7 +1,8 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
 import { GET_CONTACT_LIST } from "@/operations/list"
-import { Button } from "@/components/elements/Button/Button"
+import Desktop from "@/components/templates/Beranda/Desktop/Desktop"
+import Mobile from "@/components/templates/Beranda/Mobile/Mobile"
 
 export default function Index() {
   const { data, loading, error } = useQuery(GET_CONTACT_LIST)
@@ -9,10 +10,9 @@ export default function Index() {
   console.log(data)
 
   return (
-    <div>
-      <Button onClick={() => console.log("CLICK")} variant="success">
-        INNI BUTTON
-      </Button>
-    </div>
+    <>
+      <Desktop />
+      <Mobile />
+    </>
   )
 }
