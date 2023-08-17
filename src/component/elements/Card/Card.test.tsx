@@ -15,10 +15,10 @@ describe("Render Card", () => {
       </ThemeProvider>
     )
 
-    const buttonElement = screen.getByText(text)
-    expect(buttonElement).toBeInTheDocument()
+    const cardElement = screen.getByText(text)
+    expect(cardElement).toBeInTheDocument()
 
-    fireEvent.click(buttonElement)
+    fireEvent.click(cardElement)
     expect(handleClick).toBeCalled()
   })
 })
