@@ -1,8 +1,9 @@
 import * as React from "react"
 import { StyledInput } from "./input-styling"
+import { ColorPropsOptionsals } from "@/interfaces/props"
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  variant?: "primary" | "success" | "danger" | "warning" | "info" | "light"
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    ColorPropsOptionsals {
   sizes?: "small" | "large"
   rounded?: boolean
 }

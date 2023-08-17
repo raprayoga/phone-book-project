@@ -1,12 +1,13 @@
 import React from "react"
 import { StyledButton, StyledSvgLoading } from "./button-styling"
+import { ColorPropsOptionsals } from "@/interfaces/props"
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    ColorPropsOptionsals {
   isDisabled?: boolean
   onClick: () => void
   isLoading?: boolean
-  variant?: "primary" | "success" | "danger" | "warning" | "info" | "light"
   sizes?: "small" | "large"
 }
 
