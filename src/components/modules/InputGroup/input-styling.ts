@@ -22,7 +22,7 @@ const getSizeStyles = ({
         padding: 0.5rem 3rem;
         border-radius: ${rounded ? "1rem" : "0.25rem"};
 
-        &:first-of-type {
+        &:first-child {
           padding-left: 0.5rem;
         }
         
@@ -36,7 +36,7 @@ const getSizeStyles = ({
         padding: 0.75rem 5rem;
         border-radius: ${rounded ? "1.5rem" : "0.75rem"};
 
-        &:first-of-type {
+        &:first-child {
           padding-left: 1rem;
         }
         
