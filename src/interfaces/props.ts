@@ -9,6 +9,7 @@ export interface ColorProps {
     | "secondary"
     | "white"
     | "black"
+    | "gainsboro"
 }
 
 export interface SizesProps {

@@ -9,6 +9,7 @@ export const Theme = {
     white: "#ffffff",
     black: "#000000",
     light: "#f8f9fa",
+    gainsboro: "#E5E5E5",
   },
   font: {
     sm: "12px",
