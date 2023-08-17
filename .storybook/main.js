@@ -23,7 +23,7 @@ const config = {
     config.resolve.modules = [path.resolve(__dirname, ".."), "node_modules"]
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@/component": path.resolve(__dirname, "../src/component"),
+      "@/components": path.resolve(__dirname, "../src/components"),
     }
 
     return config
