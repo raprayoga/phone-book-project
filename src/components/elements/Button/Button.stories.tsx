@@ -55,3 +55,19 @@ export const Loading: Story = {
     )
   },
 }
+
+export const Outline: Story = {
+  render: (args) => {
+    return (
+      <Button
+        style={{ width: "300px" }}
+        {...args}
+        onClick={action("onCLick!")}
+        isOutline
+        variant="danger"
+      >
+        Button Disabled
+      </Button>
+    )
+  },
+}

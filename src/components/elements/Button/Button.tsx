@@ -8,6 +8,7 @@ export interface ButtonProps
   isDisabled?: boolean
   onClick: () => void
   isLoading?: boolean
+  isOutline?: boolean
   sizes?: "small" | "large"
 }
 
@@ -16,6 +17,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       isDisabled = false,
       isLoading = false,
+      isOutline = false,
       onClick,
       children,
       variant = "primary",
@@ -34,6 +36,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         variant={variant}
         isDisabled={isDisabled}
         isLoading={isLoading}
+        isOutline={isOutline}
         sizes={sizes}
         onClick={handleClick}
         {...props}
