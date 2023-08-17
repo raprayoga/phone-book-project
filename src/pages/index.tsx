@@ -1,7 +1,7 @@
 import React from "react"
 import { useQuery } from "@apollo/client"
 import { GET_CONTACT_LIST } from "@/operations/list"
-import { Button } from "@/component/elements/Button/Button"
+import { Button } from "@/components/elements/Button/Button"
 
 export default function Index() {
   const { data, loading, error } = useQuery(GET_CONTACT_LIST)

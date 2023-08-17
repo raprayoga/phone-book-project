@@ -1,44 +1,49 @@
 import React from "react"
 import { StyledButton, StyledSvgLoading } from "./button-styling"
+import { ColorPropsOptionsals } from "@/interfaces/props"
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isdisabled?: boolean
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    ColorPropsOptionsals {
+  isDisabled?: boolean
   onClick: () => void
   isLoading?: boolean
-  variant?: "primary" | "success" | "danger" | "warning" | "info" | "light"
-  size?: "small" | "large"
+  isOutline?: boolean
+  sizes?: "small" | "large"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      isdisabled = false,
+      isDisabled = false,
       isLoading = false,
+      isOutline = false,
       onClick,
       children,
       variant = "primary",
-      size = "small",
+      sizes = "small",
       ...props
     },
     ref
   ) => {
     const handleClick = () => {
-      if (!isdisabled && !isLoading) onClick()
+      if (!isDisabled && !isLoading) onClick()
     }
 
     return (
       <StyledButton
         ref={ref}
         variant={variant}
-        isdisabled={isdisabled}
-        size={size}
+        isDisabled={isDisabled}
+        isLoading={isLoading}
+        isOutline={isOutline}
+        sizes={sizes}
         onClick={handleClick}
         {...props}
       >
         {isLoading ? (
           <StyledSvgLoading
-            size={size}
+            sizes={sizes}
             aria-hidden="true"
             role="status"
             viewBox="0 0 100 101"

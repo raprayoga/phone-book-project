@@ -31,7 +31,7 @@ export const Disabled: Story = {
     return (
       <Button
         style={{ width: "300px" }}
-        isdisabled
+        isDisabled
         {...args}
         onClick={action("onCLick!")}
       >
@@ -49,6 +49,22 @@ export const Loading: Story = {
         {...args}
         onClick={action("onCLick!")}
         isLoading
+      >
+        Button Disabled
+      </Button>
+    )
+  },
+}
+
+export const Outline: Story = {
+  render: (args) => {
+    return (
+      <Button
+        style={{ width: "300px" }}
+        {...args}
+        onClick={action("onCLick!")}
+        isOutline
+        variant="danger"
       >
         Button Disabled
       </Button>

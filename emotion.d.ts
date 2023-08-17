@@ -12,6 +12,7 @@ declare module "@emotion/react" {
       white: string
       black: string
       light: string
+      gainsboro: string
     }
     font: {
       sm: string
