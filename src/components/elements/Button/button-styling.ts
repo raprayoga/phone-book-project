@@ -5,9 +5,36 @@ import styled from "@emotion/styled"
 interface ButtonVariantProps extends ColorProps, SizesProps {
   isDisabled: boolean
   isLoading: boolean
+  isOutline: boolean
 }
 
-const getSizeStyles = ({ sizes, theme }: { sizes?: string; theme: any }) => {
+const getOutlineStyles = ({
+  isOutline,
+  variant,
+  theme,
+}: {
+  isOutline: boolean
+  variant: string
+  theme: any
+}) => {
+  if (isOutline) {
+    return css`
+      background-color: ${theme.colors.white};
+      color: ${theme.colors[variant]};
+      &:hover {
+        background-color: ${theme.colors[variant]};
+        color: ${theme.colors.white};
+      }
+    `
+  }
+
+  return css`
+    background-color: ${theme.colors[variant]};
+    color: ${theme.colors.white};
+  `
+}
+
+const getSizeStyles = ({ sizes, theme }: { sizes: string; theme: any }) => {
   switch (sizes) {
     case "small": {
       return css`
@@ -61,19 +88,22 @@ export const StyledSvgLoading = styled.svg<{ sizes: string }>`
 
 const StyledButton = styled.button<ButtonVariantProps>`
   font-weight: 700;
-  border: 0;
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
   line-height: 1;
-  color: white;
-  background-color: ${(props) => props.theme.colors[props.variant]};
+  border: 1px solid ${(props) => props.theme.colors[props.variant]};
 
   ${(props) => getSizeStyles(props)}
+  ${(props) => getOutlineStyles(props)}
 
   &:hover {
     cursor: ${(props) =>
       props.isDisabled || props.isLoading ? "default" : "pointer"};
+    opacity: ${(props) =>
+      props.isDisabled || props.isLoading || props.isOutline ? "1" : "0.8"};
+    transition: 300ms;
+    background-color: ${(props) => props.theme.colors[props.variant]};
   }
 `
 
