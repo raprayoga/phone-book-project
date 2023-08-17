@@ -1,12 +1,5 @@
-import styled from "@emotion/styled"
 import React from "react"
-
-const StyledChildRight = styled.div`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translate(0, -50%);
-`
+import { StyledChildRight } from "./input-styling"
 
 const ChildRight = React.forwardRef<
   HTMLDivElement,

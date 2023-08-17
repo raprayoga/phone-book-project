@@ -1,51 +1,10 @@
+import { ColorProps, SizesProps } from "@/interfaces/props"
 import { css, keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
-import { ButtonProps } from "./Button"
 
-const getVariantStyles = ({
-  variant,
-  isdisabled,
-  theme,
-}: {
-  variant?: string
-  isdisabled?: boolean
-  theme: any
-}) => {
-  if (isdisabled) {
-    return css`
-      background-color: ${theme.colors.secondary};
-    `
-  }
-  switch (variant) {
-    case "primary":
-      return css`
-        background-color: ${theme.colors.primary};
-      `
-    case "secondary":
-      return css`
-        background-color: ${theme.colors.secondary};
-      `
-
-    case "success":
-      return css`
-        background-color: ${theme.colors.success};
-      `
-
-    case "danger":
-      return css`
-        background-color: ${theme.colors.danger};
-      `
-
-    case "warning":
-      return css`
-        background-color: ${theme.colors.warning};
-      `
-
-    case "info":
-      return css`
-        background-color: ${theme.colors.info};
-      `
-  }
+interface ButtonVariantProps extends ColorProps, SizesProps {
+  isDisabled: boolean
+  isLoading: boolean
 }
 
 const getSizeStyles = ({ sizes, theme }: { sizes?: string; theme: any }) => {
@@ -100,7 +59,7 @@ export const StyledSvgLoading = styled.svg<{ sizes: string }>`
   ${(props) => getSizeSvgStyles(props)}
 `
 
-export const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonVariantProps>`
   font-weight: 700;
   border: 0;
   border-radius: 3em;
@@ -108,12 +67,14 @@ export const StyledButton = styled.button<ButtonProps>`
   display: inline-block;
   line-height: 1;
   color: white;
+  background-color: ${(props) => props.theme.colors[props.variant]};
 
   ${(props) => getSizeStyles(props)}
-  ${(props) => getVariantStyles(props)}
 
   &:hover {
     cursor: ${(props) =>
-      props.isdisabled || props.isLoading ? "default" : "pointer"};
+      props.isDisabled || props.isLoading ? "default" : "pointer"};
   }
 `
+
+export { StyledButton }

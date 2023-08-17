@@ -3,7 +3,7 @@ import { StyledButton, StyledSvgLoading } from "./button-styling"
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isdisabled?: boolean
+  isDisabled?: boolean
   onClick: () => void
   isLoading?: boolean
   variant?: "primary" | "success" | "danger" | "warning" | "info" | "light"
@@ -13,7 +13,7 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      isdisabled = false,
+      isDisabled = false,
       isLoading = false,
       onClick,
       children,
@@ -24,14 +24,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const handleClick = () => {
-      if (!isdisabled && !isLoading) onClick()
+      if (!isDisabled && !isLoading) onClick()
     }
 
     return (
       <StyledButton
         ref={ref}
         variant={variant}
-        isdisabled={isdisabled}
+        isDisabled={isDisabled}
+        isLoading={isLoading}
         sizes={sizes}
         onClick={handleClick}
         {...props}
