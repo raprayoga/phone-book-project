@@ -31,7 +31,7 @@ export const Disabled: Story = {
     return (
       <Button
         style={{ width: "300px" }}
-        isdisabled
+        isDisabled
         {...args}
         onClick={action("onCLick!")}
       >
