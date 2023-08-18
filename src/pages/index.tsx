@@ -1,11 +1,10 @@
-import React from "react"
-import { useQuery } from "@apollo/client"
-import { GET_CONTACT_LIST } from "@/operations/list"
+import React, { useContext, useEffect } from "react"
 import Desktop from "@/components/templates/Beranda/Desktop/Desktop"
 import Mobile from "@/components/templates/Beranda/Mobile/Mobile"
 import { useIsMobile } from "@/hooks/useIsMobile"
 import { getIsSsrMobile } from "@/utils/mobile-detect"
 import { GetServerSidePropsContext } from "next"
+import ContactListProvider from "@/stores/contact-list/ContactListProvider"
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -16,13 +15,12 @@ export function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 export default function Index() {
-  const { data, loading, error } = useQuery(GET_CONTACT_LIST)
   const isMobile = useIsMobile()
 
   return (
-    <>
+    <ContactListProvider>
       {!isMobile && <Desktop />}
       {isMobile && <Mobile />}
-    </>
+    </ContactListProvider>
   )
 }
