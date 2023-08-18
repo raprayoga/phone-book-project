@@ -1,6 +1,6 @@
 import React from "react"
-import InputSearch from "@/components/modules/InputSearch/InputSearch"
 import { StyledNavbarContainer } from "@/components/modules/HeaderMobile/header-mobile-styling"
+import InputSearch from "@/components/modules/InputSearch"
 
 function HeaderSearchMobile() {
   return (

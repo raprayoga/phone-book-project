@@ -6,7 +6,7 @@ import {
 } from "@/components/modules/HeaderMobile/header-mobile-styling"
 import { useRouter } from "next/router"
 
-function HeaderMobile() {
+function HeaderMobile({ title }: { title: string }) {
   const router = useRouter()
 
   const backHanlder = () => {
@@ -19,7 +19,7 @@ function HeaderMobile() {
         <StyledArrowLeftIcon />
         Back
       </StyledBack>
-      <h2>My Favorite</h2>
+      <h2>{title}</h2>
     </StyledNavbarContainer>
   )
 }

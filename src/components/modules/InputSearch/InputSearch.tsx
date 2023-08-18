@@ -6,14 +6,18 @@ import {
   StyledMagnifyingGlassIcon,
 } from "./input-search-styling"
 
-function InputSearch() {
+function InputSearch(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <StyledInputGroup>
       <InputGroup>
         <ChildLeft>
           <StyledMagnifyingGlassIcon />
         </ChildLeft>
-        <StyledInput variant="gainsboro" placeholder="Placeholder here" />
+        <StyledInput
+          {...props}
+          variant="gainsboro"
+          placeholder="Search Contact"
+        />
       </InputGroup>
     </StyledInputGroup>
   )

@@ -22,7 +22,10 @@ function Toast({
     isShow && (
       <StyledToast variant={variant} position={position} {...props}>
         {props.children}
-        <StyledClosedButton onClick={() => onCLosed()} />
+        <StyledClosedButton
+          onClick={() => onCLosed()}
+          data-testid="toastclose-element"
+        />
       </StyledToast>
     )
   )

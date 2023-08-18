@@ -11,6 +11,7 @@ const config = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 
+  transformIgnorePatterns: ["/node_modules/(?!(ky))"],
   testEnvironment: "jest-environment-jsdom",
 }
 

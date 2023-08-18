@@ -29,9 +29,9 @@ const StarIconElement = () => {
   }
 }
 
-function BottomNav() {
+function BottomNav(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <StyledNavContainer>
+    <StyledNavContainer {...props}>
       <StyledFavNav>
         <Link href="/">
           <UserIconElement />

@@ -7,12 +7,7 @@ import { Contact } from "@/interfaces/contact"
 function ContactCard({ contact }: { contact: Contact }) {
   return (
     <StyledCard key={contact.id}>
-      <Image
-        src={defaultProfile}
-        alt={"profile image"}
-        width={40}
-        height={40}
-      />
+      <Image src={defaultProfile} alt="profile image" width={40} height={40} />
       <StyledInfo>
         <p>{contact.first_name}</p>
         <p>

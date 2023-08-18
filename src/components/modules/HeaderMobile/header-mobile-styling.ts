@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { ArrowLeftIcon } from "@heroicons/react/24/outline"
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined"
 
 const StyledNavbarContainer = styled.div`
   position: fixed;
@@ -25,7 +25,7 @@ const StyledBack = styled.div`
   align-items: center;
 `
 
-const StyledArrowLeftIcon = styled(ArrowLeftIcon)`
+const StyledArrowLeftIcon = styled(ArrowBackOutlinedIcon)`
   width: 14px;
   height: 14px;
   stroke-width: 3;
