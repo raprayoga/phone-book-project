@@ -1,7 +1,7 @@
 import { ApolloError } from "@apollo/client"
 import React from "react"
 
-const CartContext = React.createContext<{
+const ContactListContext = React.createContext<{
   items: any[]
   loading: boolean
   error?: ApolloError
@@ -13,4 +13,4 @@ const CartContext = React.createContext<{
   getItem: () => {},
 })
 
-export default CartContext
+export default ContactListContext
