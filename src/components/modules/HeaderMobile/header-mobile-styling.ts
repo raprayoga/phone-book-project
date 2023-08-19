@@ -6,6 +6,7 @@ const StyledNavbarContainer = styled.div`
   left: 0;
   right: 0;
   top: 0;
+  z-index: 40;
   margin: auto;
   background: white;
   padding: 1rem 1rem;

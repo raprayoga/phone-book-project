@@ -41,7 +41,7 @@ const getSizeStyles = ({ sizes, theme }: { sizes: string; theme: any }) => {
     case "small": {
       return css`
         font-size: ${theme.font.sm};
-        padding: 5px 8px;
+        padding: 10px 16px;
       `
     }
     case "large": {
