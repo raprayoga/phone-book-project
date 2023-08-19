@@ -13,8 +13,8 @@ function LoadingMobile() {
     <StyledCard data-testid="loading-skeleton-element">
       <StyledSkeletonImage data-testid="skeleton-image" />
       <StyledInfo>
-        <StyledSkeletonText data-testid="skeleton-text1"/>
-        <StyledSkeletonText data-testid="skeleton-text2"/>
+        <StyledSkeletonText data-testid="skeleton-text1" />
+        <StyledSkeletonText data-testid="skeleton-text2" />
       </StyledInfo>
     </StyledCard>
   )
