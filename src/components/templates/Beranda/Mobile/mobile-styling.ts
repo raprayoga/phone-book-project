@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 
 const StyledContainer = styled.div`
+  height: 100vw;
   margin: 0 auto;
   width: 95%;
   font-weight: bolder;

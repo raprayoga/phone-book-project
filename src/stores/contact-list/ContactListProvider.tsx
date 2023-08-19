@@ -23,22 +23,15 @@ const ContactListProvider = ({ children }: { children: React.ReactNode }) => {
     })
   }
 
-  const loadMoreHandler = (query: Partial<OperationVariables> | undefined) => {
-    setOffset((prevState) => {
-      return prevState + 1
-    })
-    console.log(offset)
-    getItemHandler(query)
-  }
-
-  const contactListContext = {
-    items: data?.contact,
-    loading: loading,
-    offset: offset,
-    error: error,
-    getItem: getItemHandler,
-    loadMore: loadMoreHandler,
-  }
+  const contactListContext = useMemo(
+    () => ({
+      items: data?.contact,
+      loading: loading,
+      error: error,
+      getItem: getItemHandler,
+    }),
+    [loading, error, data?.contact]
+  )
 
   return (
     <ContactListContext.Provider value={contactListContext}>

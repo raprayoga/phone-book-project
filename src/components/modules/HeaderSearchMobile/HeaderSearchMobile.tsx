@@ -12,33 +12,7 @@ import ContactListContext from "@/stores/contact-list/contact-list-context"
 function HeaderSearchMobile() {
   const contactListCtx = useContext(ContactListContext)
   const [timer, setTimer] = useState<any>(null)
-  const [offset, setOffset] = useState<number>(0)
   const inputRef = useRef<ElementRef<typeof InputSearch>>(null)
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
-  const handleScroll = () => {
-    const trigger: number = document.documentElement.scrollHeight * 0.25
-    const scrollPosition: number = window.scrollY
-    if (scrollPosition > trigger) {
-      setOffset(() => {
-        return offset + 1
-      })
-      contactListCtx.getItem({
-        where: {
-          first_name: { _like: `${inputRef.current?.value}%` },
-        },
-        offset: offset,
-      })
-      console.log(offset)
-    }
-  }
 
   const changeHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearTimeout(timer)
