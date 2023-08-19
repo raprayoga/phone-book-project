@@ -1,10 +1,9 @@
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import { GET_CONTACT_LIST } from "@/operations/list"
 import { OperationVariables, useQuery } from "@apollo/client"
 import ContactListContext from "./contact-list-context"
 
 const ContactListProvider = ({ children }: { children: React.ReactNode }) => {
-  const [offset, setOffset] = useState(0)
   const { data, loading, refetch, error } = useQuery(GET_CONTACT_LIST, {
     variables: {
       order_by: {
@@ -18,7 +17,6 @@ const ContactListProvider = ({ children }: { children: React.ReactNode }) => {
       order_by: {
         first_name: "asc",
       },
-      offset: offset,
       ...query,
     })
   }

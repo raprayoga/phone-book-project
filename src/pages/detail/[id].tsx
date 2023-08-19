@@ -5,7 +5,7 @@ import MobileHeaderOnly from "@/components/layouts/MobileHeaderOnly"
 export default function Page() {
   return (
     <>
-      <MobileHeaderOnly title="My Favorite">
+      <MobileHeaderOnly title="">
         <Mobile />
       </MobileHeaderOnly>
     </>
