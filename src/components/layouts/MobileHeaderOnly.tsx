@@ -1,6 +1,7 @@
 import React from "react"
 import HeaderMobile from "@/components/modules/HeaderMobile"
 import DetailContactProvider from "@/stores/detail-contact/DetailContactProvider"
+import DeleteContactProvider from "@/stores/delete-contact/DeleteContactProvider"
 
 export default function MobileHeaderOnly({
   title,
@@ -11,8 +12,10 @@ export default function MobileHeaderOnly({
 }) {
   return (
     <DetailContactProvider>
-      <HeaderMobile title={title} />
-      <main>{children}</main>
+      <DeleteContactProvider>
+        <HeaderMobile title={title} />
+        <main>{children}</main>
+      </DeleteContactProvider>
     </DetailContactProvider>
   )
 }

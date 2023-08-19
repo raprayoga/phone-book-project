@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled"
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined"
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined"
@@ -13,9 +13,11 @@ import {
 import { useRouter } from "next/router"
 import waIcon from "../../../assets/images/wa-icon.svg"
 import Image from "next/image"
+import DeleteContactContext from "@/stores/delete-contact/delete-contact-context"
 
 function DetailProfile({ phones }: { phones?: { number: string }[] }) {
   const router = useRouter()
+  const deleteContactCtx = useContext(DeleteContactContext)
 
   const callHandler = (phone: string) => {
     window.open(`tel:${phone}`)
@@ -32,7 +34,8 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
   }
 
   const deleteHandler = () => {
-    console.log("DELETE")
+    deleteContactCtx.deleteItem(router.query.id)
+    router.back()
   }
 
   return (
