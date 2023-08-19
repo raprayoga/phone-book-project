@@ -3,7 +3,6 @@ import styled from "@emotion/styled"
 const StyledContainer = styled.div`
   min-height: 90vh;
   margin: 0 auto;
-  margin-top: 5vh;
   background-color: ${(props) => props.theme.colors.light};
 `
 

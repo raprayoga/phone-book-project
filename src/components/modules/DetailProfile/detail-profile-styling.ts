@@ -5,7 +5,7 @@ import Button from "@/components/elements/Button"
 const DetailProfileContainer = styled.ul`
   padding: 2rem;
   width: 100%;
-  height: 55vh;
+  height: 35vh;
   background-color: ${(props) => props.theme.colors.white};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
