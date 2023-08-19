@@ -1,11 +1,8 @@
 import React from "react"
-import { StyledCard } from "./skeleton-styling"
+import { StyledSkeleton } from "./skeleton-styling"
 
-function Skeleton({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return <StyledCard data-testid="skeleton" {...props} />
+function Skeleton(props: React.HTMLAttributes<HTMLDivElement>) {
+  return <StyledSkeleton data-testid="skeleton" {...props} />
 }
 
 export { Skeleton }

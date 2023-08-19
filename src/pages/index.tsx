@@ -1,18 +1,31 @@
 import React from "react"
-import { useQuery } from "@apollo/client"
-import { GET_CONTACT_LIST } from "@/operations/list"
-import { Button } from "@/components/elements/Button/Button"
+import Desktop from "@/components/templates/Beranda/Desktop/Desktop"
+import Mobile from "@/components/templates/Beranda/Mobile/Mobile"
+import { useIsMobile } from "@/hooks/useIsMobile"
+import { getIsSsrMobile } from "@/utils/mobile-detect"
+import { GetServerSidePropsContext } from "next"
+import ContactListProvider from "@/stores/contact-list/ContactListProvider"
+import MobileLayout from "@/components/layouts/MobileLayout"
 
-export default function Index() {
-  const { data, loading, error } = useQuery(GET_CONTACT_LIST)
+export function getServerSideProps(context: GetServerSidePropsContext) {
+  return {
+    props: {
+      isSsrMobile: getIsSsrMobile(context),
+    },
+  }
+}
 
-  console.log(data)
+export default function Page() {
+  const isMobile = useIsMobile()
 
   return (
-    <div>
-      <Button onClick={() => console.log("CLICK")} variant="success">
-        INNI BUTTON
-      </Button>
-    </div>
+    <>
+      {!isMobile && <Desktop />}
+      {isMobile && (
+        <MobileLayout>
+          <Mobile />
+        </MobileLayout>
+      )}
+    </>
   )
 }

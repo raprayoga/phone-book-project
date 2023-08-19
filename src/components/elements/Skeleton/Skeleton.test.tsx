@@ -19,5 +19,8 @@ describe("Render Skeleton", () => {
     expect(skeletonElement).toHaveStyle(
       `background-color: ${Theme.colors.gainsboro}`
     )
+    expect(skeletonElement).toHaveStyle(
+      "animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1)"
+    )
   })
 })
