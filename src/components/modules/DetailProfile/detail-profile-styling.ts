@@ -5,7 +5,7 @@ import Button from "@/components/elements/Button"
 const DetailProfileContainer = styled.ul`
   padding: 2rem;
   width: 100%;
-  height: 35vh;
+  height: 45vh;
   background-color: ${(props) => props.theme.colors.white};
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -36,10 +36,18 @@ const StyledButton = styled(Button)`
   padding: 5px;
 `
 
+const StyledActionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 3rem;
+`
+
 export {
   DetailProfileContainer,
   StyledPhoneIcon,
   StyledList,
   StyledPhoneNumber,
   StyledButton,
+  StyledActionContainer,
 }
