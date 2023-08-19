@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { ThemeProvider } from "@emotion/react"
 import { Theme } from "@/styles/theme"
@@ -21,8 +21,9 @@ describe("Render DetailProfile", () => {
     )
 
     expect(screen.getByAltText("profile image")).toBeInTheDocument()
-    const callButtonlement = screen.getByTestId("callbutton-element")
-    expect(callButtonlement).toBeInTheDocument()
-    fireEvent.click(callButtonlement)
+    expect(screen.getByTestId("callbutton-element")).toBeInTheDocument()
+    expect(screen.getByTestId("editbutton-element")).toBeInTheDocument()
+    expect(screen.getByTestId("deletebutton-element")).toBeInTheDocument()
+    expect(screen.getByText(phones[0].number)).toBeInTheDocument()
   })
 })

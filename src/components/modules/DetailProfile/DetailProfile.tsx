@@ -64,7 +64,7 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
 
       <StyledActionContainer>
         <StyledButton
-          data-testid="callbutton-element"
+          data-testid="editbutton-element"
           variant="warning"
           onClick={() => editHandler()}
         >
@@ -73,7 +73,7 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
 
         <StyledButton
           variant="danger"
-          data-testid="callbutton-element"
+          data-testid="deletebutton-element"
           onClick={() => deleteHandler()}
         >
           <DeleteOutlineOutlinedIcon />
