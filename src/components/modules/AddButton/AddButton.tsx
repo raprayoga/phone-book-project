@@ -24,7 +24,7 @@ function AddButton() {
       <StyledButton onClick={onClickHandler}>
         <AddOutlinedIcon />
       </StyledButton>,
-      document.getElementById("floating-button")
+      document.getElementById("floating-button")!
     )
   )
 }
