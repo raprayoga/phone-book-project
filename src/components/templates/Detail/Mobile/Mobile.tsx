@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { StyledContainer } from "./mobile-styling"
-import DetailContactContext from "@/stores/detail-contact/detail-contact"
+import DetailContactContext from "@/stores/detail-contact/detail-contact-context"
 import { useRouter } from "next/router"
 import DetailProfile from "@/components/modules/DetailProfile"
 import ProfilePhoto from "@/components/modules/ProfilePhoto"
