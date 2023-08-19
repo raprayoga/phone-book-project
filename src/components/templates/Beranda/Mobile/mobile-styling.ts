@@ -6,7 +6,15 @@ const StyledContainer = styled.div`
   font-weight: bolder;
   font-size: 22px;
   margin-top: 130px;
-  margin-bottom: 36px;
+  margin-bottom: 300px;
 `
 
-export { StyledContainer }
+const StyledError = styled.div`
+  position: fixed;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
+export { StyledContainer, StyledError }
