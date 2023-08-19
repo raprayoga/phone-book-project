@@ -1,8 +1,9 @@
-import { ApolloError } from "@apollo/client"
 import React from "react"
+import { ApolloError } from "@apollo/client"
+import { Contact } from "@/interfaces/contact"
 
 const ContactListContext = React.createContext<{
-  items: any[]
+  items: Contact[]
   loading: boolean
   error?: ApolloError
   getItem: (query: any) => void
