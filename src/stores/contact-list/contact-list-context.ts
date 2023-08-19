@@ -5,7 +5,7 @@ const ContactListContext = React.createContext<{
   items: any[]
   loading: boolean
   error?: ApolloError
-  getItem: () => void
+  getItem: (query: any) => void
 }>({
   items: [],
   loading: false,

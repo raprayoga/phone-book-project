@@ -19,13 +19,13 @@ export default function Page() {
   const isMobile = useIsMobile()
 
   return (
-    <ContactListProvider>
+    <>
       {!isMobile && <Desktop />}
       {isMobile && (
         <MobileLayout>
           <Mobile />
         </MobileLayout>
       )}
-    </ContactListProvider>
+    </>
   )
 }

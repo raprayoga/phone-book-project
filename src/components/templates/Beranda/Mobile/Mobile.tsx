@@ -10,7 +10,7 @@ export default function Mobile() {
   const contactListCtx = useContext(ContactListContext)
 
   useEffect(() => {
-    contactListCtx.getItem()
+    contactListCtx.getItem({})
   }, [])
 
   return (
@@ -23,7 +23,9 @@ export default function Mobile() {
             </StyledError>
           )}
           {contactListCtx.loading &&
-            Array.from(Array(10)).map((e) => <LoadingMobile key={e} />)}
+            Array.from(Array(10)).map((e, index) => (
+              <LoadingMobile key={index} />
+            ))}
           {!contactListCtx.loading &&
             !contactListCtx.error &&
             contactListCtx.items.map((contact) => (
