@@ -1,7 +1,10 @@
 import React from "react"
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled"
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined"
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined"
 import {
   DetailProfileContainer,
+  StyledActionContainer,
   StyledButton,
   StyledList,
   StyledPhoneIcon,
@@ -22,6 +25,14 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
     router.push(
       `https://api.whatsapp.com/send/?phone=${phone}&text=&app_absent=0`
     )
+  }
+
+  const editHandler = () => {
+    router.push(`/edit/${router.query.id}`)
+  }
+
+  const deleteHandler = () => {
+    console.log("DELETE")
   }
 
   return (
@@ -50,6 +61,24 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
           </StyledPhoneNumber>
         </StyledList>
       ))}
+
+      <StyledActionContainer>
+        <StyledButton
+          data-testid="callbutton-element"
+          variant="warning"
+          onClick={() => editHandler()}
+        >
+          <BorderColorOutlinedIcon />
+        </StyledButton>
+
+        <StyledButton
+          variant="danger"
+          data-testid="callbutton-element"
+          onClick={() => deleteHandler()}
+        >
+          <DeleteOutlineOutlinedIcon />
+        </StyledButton>
+      </StyledActionContainer>
     </DetailProfileContainer>
   )
 }
