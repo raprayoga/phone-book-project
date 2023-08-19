@@ -24,7 +24,7 @@ function EditButton({ id }: { id?: string | string[] }) {
       <StyledButton onClick={onClickHandler} variant="warning">
         <BorderColorOutlinedIcon />
       </StyledButton>,
-      document.getElementById("floating-button")
+      document.getElementById("floating-button")!
     )
   )
 }

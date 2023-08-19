@@ -5,12 +5,12 @@ export default function Desktop() {
   const contactListCtx = useContext(ContactListContext)
 
   useEffect(() => {
-    contactListCtx.getItem()
+    contactListCtx.getItem({})
   }, [])
 
   return (
     <>
-      <button onClick={() => contactListCtx.getItem()}>REFETCH</button>
+      <button onClick={() => contactListCtx.getItem({})}>REFETCH</button>
       {`${contactListCtx.items}`}
     </>
   )
