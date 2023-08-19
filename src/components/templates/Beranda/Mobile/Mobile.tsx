@@ -5,6 +5,7 @@ import ContactCard from "@/components/modules/ContactCard"
 import Link from "next/link"
 import { LoadingMobile } from "@/components/modules/LoadingMobile/LoadingMobile"
 import ErrorFeedback from "@/components/modules/ErrorFeedback"
+import AddButton from "@/components/modules/AddButton"
 
 export default function Mobile() {
   const contactListCtx = useContext(ContactListContext)
@@ -34,6 +35,7 @@ export default function Mobile() {
               </Link>
             ))}
         </div>
+        <AddButton />
       </StyledContainer>
     </>
   )

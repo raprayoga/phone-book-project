@@ -28,6 +28,10 @@ const StyledPhoneNumber = styled.div`
 
   & > p {
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
   }
 `
 
