@@ -26,5 +26,6 @@ const InputSearch = React.forwardRef<
     </StyledInputGroup>
   )
 })
+InputSearch.displayName = "InputSearch"
 
 export { InputSearch }
