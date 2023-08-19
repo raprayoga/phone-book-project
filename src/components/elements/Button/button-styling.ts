@@ -21,6 +21,7 @@ const getOutlineStyles = ({
     return css`
       background-color: ${theme.colors.white};
       color: ${theme.colors[variant]};
+      border: 1px solid ${theme.colors[variant]};
       &:hover {
         background-color: ${theme.colors[variant]};
         color: ${theme.colors.white};
@@ -31,6 +32,7 @@ const getOutlineStyles = ({
   return css`
     background-color: ${theme.colors[variant]};
     color: ${theme.colors.white};
+    border: none;
   `
 }
 
@@ -39,13 +41,13 @@ const getSizeStyles = ({ sizes, theme }: { sizes: string; theme: any }) => {
     case "small": {
       return css`
         font-size: ${theme.font.sm};
-        padding: 10px 16px;
+        padding: 5px 8px;
       `
     }
     case "large": {
       return css`
         font-size: ${theme.font.lg};
-        padding: 12px 24px;
+        padding: 10px 16px;
       `
     }
   }
@@ -92,7 +94,6 @@ const StyledButton = styled.button<ButtonVariantProps>`
   cursor: pointer;
   display: inline-block;
   line-height: 1;
-  border: 1px solid ${(props) => props.theme.colors[props.variant]};
 
   ${(props) => getSizeStyles(props)}
   ${(props) => getOutlineStyles(props)}

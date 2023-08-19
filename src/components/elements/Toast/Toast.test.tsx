@@ -17,11 +17,12 @@ describe("Render Toast", () => {
       </ThemeProvider>
     )
 
-    const ToastElement = screen.getByText(text)
-    expect(ToastElement).toBeInTheDocument()
-    expect(ToastElement).toHaveStyle("animation-fill-mode: forwards")
+    const toastElement = screen.getByText(text)
+    expect(toastElement).toBeInTheDocument()
+    expect(toastElement).toHaveStyle("animation-fill-mode: forwards")
 
-    fireEvent.click(ToastElement)
+    const toastCloseElement = screen.getByTestId("toastclose-element")
+    fireEvent.click(toastCloseElement)
     expect(handleClick).toBeCalled()
   })
 })

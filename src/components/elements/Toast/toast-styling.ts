@@ -2,7 +2,7 @@ import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
 import Card from "@/components/elements/Card"
 import { ColorProps } from "@/interfaces/props"
-import { XMarkIcon } from "@heroicons/react/24/outline"
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined"
 
 interface ToastVariantProps extends ColorProps {
   position: "bottom" | "top"
@@ -36,7 +36,7 @@ const StyledToast = styled(Card)<ToastVariantProps>`
   animation-fill-mode: forwards;
 `
 
-const StyledClosedButton = styled(XMarkIcon)`
+const StyledClosedButton = styled(CloseOutlinedIcon)`
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;

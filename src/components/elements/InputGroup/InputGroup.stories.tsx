@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import Input, { InputGroup, ChildLeft, ChildRight } from "./index"
-import Button from "../../elements/Button/index"
+import Button from "../Button/index"
 import { action } from "@storybook/addon-actions"
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined"
 
 const meta: Meta<typeof Input> = {
   component: Input,
@@ -50,7 +50,7 @@ export const IconVariant: Story = {
   render: (args) => (
     <InputGroup sizes={args.sizes}>
       <ChildLeft style={{ padding: "10px" }}>
-        <MagnifyingGlassIcon style={{ width: "16px" }} />
+        <SearchOutlinedIcon style={{ width: "16px" }} />
       </ChildLeft>
       <Input {...args} placeholder="Placeholder here" />
     </InputGroup>

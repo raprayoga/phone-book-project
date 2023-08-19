@@ -10,9 +10,14 @@ export const pulse = keyframes`
   }
 `
 
-export const StyledCard = styled.div`
+const StyledSkeleton = styled.div`
   border-radius: 0.2rem;
   background-color: ${(props) => props.theme.colors.gainsboro};
 
-  animation: ${pulse} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-name: ${pulse};
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
 `
+
+export { StyledSkeleton }
