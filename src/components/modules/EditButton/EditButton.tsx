@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { createPortal } from "react-dom"
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined"
-import { StyledButton } from "./add-button-styling"
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined"
+import { StyledButton } from "@/components/modules/AddButton/add-button-styling"
 
-function AddButton() {
+function EditButton({ id }: { id?: string | string[] }) {
   const [mounted, setMounted] = useState(false)
-
   const router = useRouter()
+
   const onClickHandler = () => {
-    router.push("/add")
+    router.push(`/edit/${id}`)
   }
 
   useEffect(() => {
@@ -21,12 +21,12 @@ function AddButton() {
   return (
     mounted &&
     createPortal(
-      <StyledButton onClick={onClickHandler}>
-        <AddOutlinedIcon />
+      <StyledButton onClick={onClickHandler} variant="warning">
+        <BorderColorOutlinedIcon />
       </StyledButton>,
       document.getElementById("floating-button")
     )
   )
 }
 
-export { AddButton }
+export { EditButton }

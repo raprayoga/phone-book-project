@@ -4,6 +4,9 @@ import HeaderMobile from "./index"
 const meta: Meta<typeof HeaderMobile> = {
   component: HeaderMobile,
   parameters: {
+    args: {
+      title: "TITLE",
+    },
     layout: "centered",
   },
 }
@@ -12,7 +15,7 @@ export default meta
 type Story = StoryObj<typeof HeaderMobile>
 
 export const Default: Story = {
-  render: () => {
-    return <HeaderMobile />
+  render: (args) => {
+    return <HeaderMobile {...args} />
   },
 }

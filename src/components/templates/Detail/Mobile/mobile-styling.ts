@@ -1,12 +1,10 @@
 import styled from "@emotion/styled"
 
 const StyledContainer = styled.div`
-  min-height: 70vw;
+  min-height: 90vh;
   margin: 0 auto;
-  width: 95%;
-  font-weight: bolder;
-  margin-top: 130px;
-  margin-bottom: 300px;
+  margin-top: 5vh;
+  background-color: ${(props) => props.theme.colors.light};
 `
 
 const StyledError = styled.div`

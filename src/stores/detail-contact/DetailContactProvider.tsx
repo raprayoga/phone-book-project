@@ -1,0 +1,35 @@
+import { useMemo } from "react"
+import { useLazyQuery } from "@apollo/client"
+import DetailContactContext from "./detail-contact"
+import { GET_DETAIL_CONTACT } from "@/operations/detail"
+
+const DetailContactProvider = ({ children }: { children: React.ReactNode }) => {
+  const [getData, { loading, error, data }] = useLazyQuery(GET_DETAIL_CONTACT)
+
+  const getItemHandler = (id: number) => {
+    console.log("GET ITEM HANDLER")
+    getData({
+      variables: {
+        id: id,
+      },
+    })
+  }
+
+  const detailContactContext = useMemo(
+    () => ({
+      data: data?.contact_by_pk,
+      loading: loading,
+      error: error,
+      getItem: getItemHandler,
+    }),
+    [loading, error, data?.contact_by_pk]
+  )
+
+  return (
+    <DetailContactContext.Provider value={detailContactContext}>
+      {children}
+    </DetailContactContext.Provider>
+  )
+}
+
+export default DetailContactProvider
