@@ -7,7 +7,6 @@ const DeleteContactProvider = ({ children }: { children: React.ReactNode }) => {
   const [mutateFunction, { loading, error, data }] = useMutation(DELETE_CONTACT)
 
   const deleteItemHandler = (id: number) => {
-    console.log(id)
     mutateFunction({
       variables: {
         id: id,
