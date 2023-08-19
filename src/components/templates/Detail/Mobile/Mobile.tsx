@@ -14,13 +14,19 @@ export default function Mobile() {
     detailContactCtx.getItem(router.query.id)
   }, [])
 
+  useEffect(() => {
+    if (detailContactCtx.error) router.back()
+  }, [detailContactCtx.error])
+
   return (
     <StyledContainer>
-      <ProfilePhoto contact={detailContactCtx.data} />
       {!detailContactCtx.loading && !detailContactCtx.error && (
-        <DetailProfile phones={detailContactCtx?.data?.phones} />
+        <>
+          <ProfilePhoto contact={detailContactCtx.data} />
+          <DetailProfile phones={detailContactCtx?.data?.phones} />
+          <FavoriteButton contact={detailContactCtx.data} />
+        </>
       )}
-      <FavoriteButton contact={detailContactCtx.data} />
     </StyledContainer>
   )
 }
