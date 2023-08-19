@@ -7,6 +7,7 @@ const StyledContainer = styled.div`
 `
 
 const StyledError = styled.div`
+  text-align: center;
   position: fixed;
   width: 300px;
   top: 50%;
