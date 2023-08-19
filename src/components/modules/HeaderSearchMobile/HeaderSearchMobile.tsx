@@ -1,4 +1,10 @@
-import React, { useContext, useState } from "react"
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  type ElementRef,
+} from "react"
 import { StyledNavbarContainer } from "@/components/modules/HeaderMobile/header-mobile-styling"
 import InputSearch from "@/components/modules/InputSearch"
 import ContactListContext from "@/stores/contact-list/contact-list-context"
@@ -6,6 +12,33 @@ import ContactListContext from "@/stores/contact-list/contact-list-context"
 function HeaderSearchMobile() {
   const contactListCtx = useContext(ContactListContext)
   const [timer, setTimer] = useState<any>(null)
+  const [offset, setOffset] = useState<number>(0)
+  const inputRef = useRef<ElementRef<typeof InputSearch>>(null)
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
+  const handleScroll = () => {
+    const trigger: number = document.documentElement.scrollHeight * 0.25
+    const scrollPosition: number = window.scrollY
+    if (scrollPosition > trigger) {
+      setOffset(() => {
+        return offset + 1
+      })
+      contactListCtx.getItem({
+        where: {
+          first_name: { _like: `${inputRef.current?.value}%` },
+        },
+        offset: offset,
+      })
+      console.log(offset)
+    }
+  }
 
   const changeHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearTimeout(timer)
@@ -13,7 +46,7 @@ function HeaderSearchMobile() {
       setTimeout(() => {
         contactListCtx.getItem({
           where: {
-            first_name: { _like: `${e.target.value}%` },
+            first_name: { _like: `${inputRef.current?.value}%` },
           },
         })
       }, 500)
@@ -23,7 +56,7 @@ function HeaderSearchMobile() {
   return (
     <StyledNavbarContainer>
       <h2>My Contacts</h2>
-      <InputSearch onChange={(e) => changeHanlder(e)} />
+      <InputSearch ref={inputRef} onChange={changeHanlder} />
     </StyledNavbarContainer>
   )
 }
