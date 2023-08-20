@@ -21,7 +21,7 @@ export interface FormProps {
   control: Control<Inputs, any>
 }
 
-function FormAdd() {
+function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
   const addContactCtx = useContext(AddContactContext)
   const {
     control,
@@ -59,7 +59,7 @@ function FormAdd() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form {...props} onSubmit={handleSubmit(onSubmit)}>
       <Controller
         control={control}
         rules={{
