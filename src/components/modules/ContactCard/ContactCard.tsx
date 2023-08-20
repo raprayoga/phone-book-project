@@ -4,9 +4,18 @@ import defaultProfile from "../../../assets/images/default-profile.svg"
 import { StyledCard, StyledInfo } from "./contact-card-styling"
 import { Contact } from "@/interfaces/contact"
 
-function ContactCard({ contact }: { contact: Contact }) {
+export interface ContactCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  onClick?: () => void
+  contact: Contact
+}
+
+function ContactCard({
+  contact,
+  onClick = () => null,
+  ...props
+}: ContactCardProps) {
   return (
-    <StyledCard key={contact.id}>
+    <StyledCard {...props} onClick={onClick}>
       <Image src={defaultProfile} alt="profile image" width={40} height={40} />
       <StyledInfo>
         <p>{contact.first_name}</p>

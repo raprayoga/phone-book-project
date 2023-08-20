@@ -5,6 +5,9 @@ import { useIsMobile } from "@/hooks/useIsMobile"
 import { getIsSsrMobile } from "@/utils/mobile-detect"
 import { GetServerSidePropsContext } from "next"
 import MobileLayout from "@/components/layouts/MobileLayout"
+import DesktopLayout from "@/components/layouts/DesktopLayout"
+import DetailContactProvider from "@/stores/detail-contact/DetailContactProvider"
+import DeleteContactProvider from "@/stores/delete-contact/DeleteContactProvider"
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -19,7 +22,15 @@ export default function Page() {
 
   return (
     <>
-      {!isMobile && <Desktop />}
+      {!isMobile && (
+        <DetailContactProvider>
+          <DeleteContactProvider>
+            <DesktopLayout>
+              <Desktop />
+            </DesktopLayout>
+          </DeleteContactProvider>
+        </DetailContactProvider>
+      )}
       {isMobile && (
         <MobileLayout>
           <Mobile />

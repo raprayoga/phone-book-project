@@ -6,7 +6,13 @@ import { getItemFromLocalStorage } from "@/utils/store-favorite"
 import { StyledButton } from "./fav-button-styling"
 import { Contact } from "@/interfaces/contact"
 
-function FavoriteButton({ contact }: { contact: Contact }) {
+function FavoriteButton({
+  contact,
+  onChange = () => null,
+}: {
+  contact: Contact
+  onChange?: () => void
+}) {
   const [mounted, setMounted] = useState<boolean>(false)
   const [isFavorite, setIsFavorite] = useState(false)
   const [favorites, setFavorites] = useState<{ data: Contact[] }>({ data: [] })
@@ -15,12 +21,14 @@ function FavoriteButton({ contact }: { contact: Contact }) {
     if (!favorites) {
       const newItems = { data: [contact] }
       localStorage.setItem("favorites", JSON.stringify(newItems))
+      onChange()
       return setFavorites(newItems)
     }
 
     if (!isFavorite) {
       const newItems = { data: [...favorites.data, ...[contact]] }
       localStorage.setItem("favorites", JSON.stringify(newItems))
+      onChange()
       return setFavorites(newItems)
     }
     const inFavoritesIndex = favorites.data.findIndex(
@@ -30,10 +38,11 @@ function FavoriteButton({ contact }: { contact: Contact }) {
     newItems.data.splice(inFavoritesIndex, 1)
     localStorage.setItem("favorites", JSON.stringify(newItems))
     setFavorites(newItems)
+
+    onChange()
   }
 
   const checkFavItem = () => {
-    console.log("CHECK FAV")
     if (favorites) {
       const inFavorites = favorites.data.find(
         (favorite) => favorite?.id === contact?.id
@@ -49,7 +58,7 @@ function FavoriteButton({ contact }: { contact: Contact }) {
     setFavorites(getItemFromLocalStorage("favorites"))
 
     return () => setMounted(false)
-  }, [])
+  }, [contact?.id])
 
   useEffect(() => {
     checkFavItem()

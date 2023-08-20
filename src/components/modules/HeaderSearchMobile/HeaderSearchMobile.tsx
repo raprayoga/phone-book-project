@@ -1,20 +1,15 @@
-import React, {
-  useContext,
-  useState,
-  useEffect,
-  useRef,
-  type ElementRef,
-} from "react"
+import React, { useContext, useState, useRef, type ElementRef } from "react"
 import { StyledNavbarContainer } from "@/components/modules/HeaderMobile/header-mobile-styling"
 import InputSearch from "@/components/modules/InputSearch"
 import ContactListContext from "@/stores/contact-list/contact-list-context"
+import { StyledSearchInput } from "./header-search-mobile-styling"
 
 function HeaderSearchMobile() {
   const contactListCtx = useContext(ContactListContext)
   const [timer, setTimer] = useState<any>(null)
   const inputRef = useRef<ElementRef<typeof InputSearch>>(null)
 
-  const changeHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeHanlder = () => {
     clearTimeout(timer)
     setTimer(
       setTimeout(() => {
@@ -30,7 +25,9 @@ function HeaderSearchMobile() {
   return (
     <StyledNavbarContainer>
       <h2>My Contacts</h2>
-      <InputSearch ref={inputRef} onChange={changeHanlder} />
+      <StyledSearchInput>
+        <InputSearch ref={inputRef} onChange={changeHanlder} />
+      </StyledSearchInput>
     </StyledNavbarContainer>
   )
 }
