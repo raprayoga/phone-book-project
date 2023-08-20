@@ -7,6 +7,7 @@ import {
   StyledContainerMain,
   StyledContainerRightPanel,
   StyledEditContainer,
+  StyledError,
   StyledFavoriteList,
 } from "./desktop-styling"
 import HeaderSearchDesktop from "@/components/modules/HeaderSearchDesktop"
@@ -18,6 +19,7 @@ import { Contact } from "@/interfaces/contact"
 import DeleteContactContext from "@/stores/delete-contact/delete-contact-context"
 import DetailProfile from "@/components/modules/DetailProfile"
 import { useRouter } from "next/router"
+import ErrorFeedback from "@/components/modules/ErrorFeedback"
 
 export default function Desktop() {
   const router = useRouter()
@@ -65,17 +67,27 @@ export default function Desktop() {
     <StyledContainer>
       <StyledContainerMain>
         <HeaderSearchDesktop />
-        <StyledFavoriteList>
-          Favorite
-          {favorites?.data.map((contact) => (
-            <StyledContactCard
-              key={contact.id}
-              isActive={+contact.id === isActive}
-              contact={contact}
-              onClick={() => clickContactHandler(contact.id)}
+        {favorites && favorites.data.length > 0 && (
+          <StyledFavoriteList>
+            Favorite
+            {favorites?.data.map((contact) => (
+              <StyledContactCard
+                key={contact.id}
+                isActive={+contact.id === isActive}
+                contact={contact}
+                onClick={() => clickContactHandler(contact.id)}
+              />
+            ))}
+          </StyledFavoriteList>
+        )}
+        {contactListCtx.error && (
+          <StyledError>
+            <ErrorFeedback
+              caption="Terjadi Kesalahan, Silahkan Coba lagi"
+              onClick={refetchHandler}
             />
-          ))}
-        </StyledFavoriteList>
+          </StyledError>
+        )}
         {!contactListCtx.loading &&
           !contactListCtx.error &&
           contactListCtx.items.map((contact) => (

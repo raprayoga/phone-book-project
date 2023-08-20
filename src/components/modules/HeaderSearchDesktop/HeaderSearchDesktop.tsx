@@ -1,5 +1,5 @@
 import React, { useRef, useContext, useState, type ElementRef } from "react"
-import InputSearch from "../InputSearch"
+import InputSearch from "@/components/modules/InputSearch"
 import ContactListContext from "@/stores/contact-list/contact-list-context"
 import {
   StyledActionSearch,
