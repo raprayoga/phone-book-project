@@ -1,6 +1,7 @@
 import ContactCard from "@/components/modules/ContactCard"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
+import Button from "@/components/elements/Button"
 
 const getActiveStyles = ({
   isActive,
@@ -52,6 +53,15 @@ const StyledFavoriteList = styled.div`
   margin-bottom: 2rem;
 `
 
+const StyledButtonEdit = styled(Button)`
+  width: 100%;
+  margin-top: 0.5rem;
+`
+
+const StyledEditContainer = styled.div`
+  margin: 50px 10px;
+`
+
 export {
   StyledContainerMain,
   StyledError,
@@ -59,4 +69,6 @@ export {
   StyledContainer,
   StyledContactCard,
   StyledFavoriteList,
+  StyledButtonEdit,
+  StyledEditContainer,
 }

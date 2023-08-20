@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import ContactListContext from "@/stores/contact-list/contact-list-context"
 import {
+  StyledButtonEdit,
   StyledContactCard,
   StyledContainer,
   StyledContainerMain,
   StyledContainerRightPanel,
+  StyledEditContainer,
   StyledFavoriteList,
 } from "./desktop-styling"
 import HeaderSearchDesktop from "@/components/modules/HeaderSearchDesktop"
@@ -15,13 +17,14 @@ import { getItemFromLocalStorage } from "@/utils/store-favorite"
 import { Contact } from "@/interfaces/contact"
 import DeleteContactContext from "@/stores/delete-contact/delete-contact-context"
 import DetailProfile from "@/components/modules/DetailProfile"
+import { useRouter } from "next/router"
 
 export default function Desktop() {
+  const router = useRouter()
   const contactListCtx = useContext(ContactListContext)
   const detailContactCtx = useContext(DetailContactContext)
   const deleteContactCtx = useContext(DeleteContactContext)
   const [isActive, setActive] = useState<number>()
-  const [isEdit, setIsEdit] = useState<boolean>()
   const [favorites, setFavorites] = useState<{ data: Contact[] }>({ data: [] })
 
   const refetchHandler = () => {
@@ -36,15 +39,16 @@ export default function Desktop() {
     setFavorites(getItemFromLocalStorage("favorites"))
   }
 
-  const editHandler = () => [setIsEdit(true)]
+  const editHandler = (id: number) => [router.push(`/edit/${id}`)]
   const deleteHandler = () => {
     deleteContactCtx.deleteItem(isActive)
     contactListCtx.getItem({})
+    getFavorite()
   }
 
   useEffect(() => {
     contactListCtx.getItem({})
-    setFavorites(getItemFromLocalStorage("favorites"))
+    getFavorite()
   }, [])
 
   useEffect(() => {
@@ -85,12 +89,12 @@ export default function Desktop() {
       </StyledContainerMain>
 
       <StyledContainerRightPanel>
-        {!isEdit && isActive && (
+        {isActive && (
           <>
             <ProfilePhoto contact={detailContactCtx.data} />
             <DetailProfile
               deleteHandler={deleteHandler}
-              editHandler={editHandler}
+              editHandler={() => editHandler(isActive)}
               contact={detailContactCtx.data}
             />
             <FavoriteButton
