@@ -1,7 +1,7 @@
 import React from "react"
-import SideBar from "../modules/SideBar/SideBar"
 import styled from "@emotion/styled"
 import ContactListProvider from "@/stores/contact-list/ContactListProvider"
+import SideBar from "@/components/modules/SideBar"
 
 const StyledContainer = styled.div`
   display: flex;
