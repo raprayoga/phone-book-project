@@ -40,7 +40,7 @@ This application is a simple phonebook app, we can add, edit, delete, & save con
 This application is consists of two UI design for mobile and desktop basedon "user-agent"
 This application is a technical test application for the hiring process at Tokopedia.
 
-You can visit the app [here](https://www.linkedin.com/in/rafie-achmad-prayoga-8b1ba2192/) too.
+You can visit the app [here](https://phone-book-project-git-develop-raprayoga.vercel.app/) too.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
