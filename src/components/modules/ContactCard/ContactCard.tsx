@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import defaultProfile from "../../../assets/images/default-profile.svg"
+import defaultProfile from "@/assets/images/default-profile.svg"
 import { StyledCard, StyledInfo } from "./contact-card-styling"
 import { Contact } from "@/interfaces/contact"
 

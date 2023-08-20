@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Contact } from "@/interfaces/contact"
 import { getItemFromLocalStorage } from "@/utils/store-favorite"
 import Image from "next/image"
-import defaultProfile from "../../../assets/images/default-profile.svg"
+import defaultProfile from "@/assets/images/default-profile.svg"
 import Link from "next/link"
 import {
   StyledCard,

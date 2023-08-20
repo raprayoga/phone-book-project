@@ -6,7 +6,7 @@ import {
   StyledErrorMessage,
   StyledInputContainer,
   StyledLabelForm,
-} from "../FormAdd/form-add-styling"
+} from "@/components/modules/FormAdd/form-add-styling"
 import DetailContactContext from "@/stores/detail-contact/detail-contact-context"
 import { useRouter } from "next/router"
 import { formRules, rulesPhone } from "@/utils/form-rules"
@@ -162,7 +162,7 @@ function FormEdit(props: React.FormHTMLAttributes<HTMLFormElement>) {
               <StyledLabelForm htmlFor="phone1">Number Phone 1</StyledLabelForm>
               <InputGroup id="phone1">
                 <Input
-                  placeholder="Enter Number Phone..."
+                  placeholder="Enter Number Phone 1..."
                   variant={getVariant(isDirty, !!error)}
                   onChange={onChange}
                   value={value}
@@ -188,7 +188,7 @@ function FormEdit(props: React.FormHTMLAttributes<HTMLFormElement>) {
               <StyledLabelForm htmlFor="phone2">Number Phone 2</StyledLabelForm>
               <InputGroup id="phone2">
                 <Input
-                  placeholder="Enter Number Phone..."
+                  placeholder="Enter Number Phone 2..."
                   variant={getVariant(isDirty, !!error)}
                   onChange={onChange}
                   value={value}

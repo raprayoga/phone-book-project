@@ -1,7 +1,10 @@
 import React from "react"
 import { useRouter } from "next/router"
 import { StyledArrowLeftIcon } from "@/components/modules/HeaderMobile/header-mobile-styling"
-import { StyledBack, StyledContainer } from "../../Add/Desktop/desktop-styling"
+import {
+  StyledBack,
+  StyledContainer,
+} from "@/components/templates/Add/Desktop/desktop-styling"
 import { StyledFormEdit } from "./desktop-styling"
 import ToastEditForm from "@/components/modules/ToastEditForm"
 

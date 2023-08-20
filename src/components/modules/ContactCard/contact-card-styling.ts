@@ -14,7 +14,7 @@ const StyledInfo = styled.div`
   justify-content: center;
   gap: 2px;
 
-  & > p:first-child {
+  & > p:first-of-type {
     font-weight: bold;
   }
 

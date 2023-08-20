@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import Input, { InputGroup, ChildLeft, ChildRight } from "./index"
-import Button from "../Button/index"
+import Button from "@/components/elements/Button/index"
 import { action } from "@storybook/addon-actions"
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined"
 

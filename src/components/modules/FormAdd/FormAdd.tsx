@@ -65,6 +65,7 @@ function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
         rules={{
           required: formRules.required,
         }}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -93,6 +94,7 @@ function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
         rules={{
           required: formRules.required,
         }}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -122,6 +124,7 @@ function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
           ...rulesPhone,
           required: formRules.required,
         }}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -130,7 +133,7 @@ function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
             <StyledLabelForm htmlFor="phone1">Number Phone 1</StyledLabelForm>
             <InputGroup id="phone1">
               <Input
-                placeholder="Enter Number Phone..."
+                placeholder="Enter Number Phone 1..."
                 variant={getVariant(isDirty, !!error)}
                 onBlur={onBlur}
                 onChange={onChange}
@@ -148,6 +151,7 @@ function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
       <Controller
         control={control}
         rules={rulesPhone}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -156,7 +160,7 @@ function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
             <StyledLabelForm htmlFor="phone2">Number Phone 1</StyledLabelForm>
             <InputGroup id="phone2">
               <Input
-                placeholder="Enter Number Phone..."
+                placeholder="Enter Number Phone 2..."
                 variant={getVariant(isDirty, !!error)}
                 onBlur={onBlur}
                 onChange={onChange}

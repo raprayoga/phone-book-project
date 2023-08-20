@@ -5,7 +5,7 @@ import AddButton from "@/components/modules/AddButton"
 import { Contact } from "@/interfaces/contact"
 import { StyledContainer } from "@/components/templates/Beranda/Mobile/mobile-styling"
 import { getItemFromLocalStorage } from "@/utils/store-favorite"
-import { StyledError } from "../../Detail/Mobile/mobile-styling"
+import { StyledError } from "@/components/templates/Detail/Mobile/mobile-styling"
 
 export default function Mobile() {
   const [favorites, setFavorites] = useState<{ data: Contact[] }>({ data: [] })

@@ -3,7 +3,7 @@ import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled"
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined"
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined"
 import { useRouter } from "next/router"
-import waIcon from "../../../assets/images/wa-icon.svg"
+import waIcon from "@/assets/images/wa-icon.svg"
 import Image from "next/image"
 import {
   DetailProfileContainer,
