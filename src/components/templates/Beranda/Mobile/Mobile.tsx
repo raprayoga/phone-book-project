@@ -33,7 +33,7 @@ export default function Mobile() {
             </StyledError>
           )}
           {contactListCtx.loading &&
-            Array.from(Array(10)).map((e, index) => (
+            Array.from(Array(5)).map((e, index) => (
               <LoadingMobile key={index} />
             ))}
           {!contactListCtx.loading &&
