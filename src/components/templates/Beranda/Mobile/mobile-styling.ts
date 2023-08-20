@@ -4,7 +4,6 @@ const StyledContainer = styled.div`
   min-height: 70vw;
   margin: 0 auto;
   width: 95%;
-  font-weight: bolder;
   margin-top: 130px;
   margin-bottom: 300px;
 `

@@ -20,7 +20,7 @@ export interface FormProps {
   control: Control<Inputs, any>
 }
 
-export default function FormAdd() {
+function FormAdd() {
   const {
     control,
     handleSubmit,
@@ -99,7 +99,7 @@ export default function FormAdd() {
             <StyledLabelForm htmlFor="last_name">Last Name</StyledLabelForm>
             <InputGroup id="last_name">
               <Input
-                placeholder="Enter First Name..."
+                placeholder="Enter Last Name..."
                 variant={getVariant(isDirty, !!error)}
                 onBlur={onBlur}
                 onChange={onChange}
@@ -188,3 +188,5 @@ export default function FormAdd() {
     </form>
   )
 }
+
+export { FormAdd }
