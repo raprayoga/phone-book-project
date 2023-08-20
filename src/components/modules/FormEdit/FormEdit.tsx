@@ -9,7 +9,7 @@ import {
 } from "../FormAdd/form-add-styling"
 import DetailContactContext from "@/stores/detail-contact/detail-contact-context"
 import { useRouter } from "next/router"
-import { formRules } from "@/utils/form-rules"
+import { formRules, rulesPhone } from "@/utils/form-rules"
 import EditContactContext from "@/stores/edit-contact/edit-contact-context"
 
 export type Inputs = {
@@ -21,12 +21,6 @@ export type Inputs = {
 
 export interface FormProps {
   control: Control<Inputs, any>
-}
-
-const rulesPhone = {
-  pattern: formRules.phone,
-  minLength: formRules.minLenth(6),
-  maxLength: formRules.manLenth(18),
 }
 
 function FormEdit() {
@@ -139,7 +133,10 @@ function FormEdit() {
 
         <Controller
           control={control}
-          rules={rulesPhone}
+          rules={{
+            ...rulesPhone,
+            required: formRules.required,
+          }}
           defaultValue={detailContactCtx?.data?.phones[0]?.number}
           render={({
             field: { onChange, value },
