@@ -13,16 +13,27 @@ export default function Mobile() {
   }
 
   useEffect(() => {
-    if (addContactCtx.data) {
+    if (addContactCtx.data || addContactCtx.error) {
       setIsShowToast(true)
+
+      setTimeout(() => {
+        setIsShowToast(false)
+      }, 3000)
     }
-  }, [addContactCtx.data])
+  }, [addContactCtx.data, addContactCtx.error])
 
   return (
     <StyledContainer>
       <FormAdd />
-      <Toast variant="success" isShow={isShowToast} onCLosed={closedHandler}>
-        Contact Berhasil Ditambahkan
+      <Toast
+        variant={addContactCtx.error ? "danger" : "success"}
+        position="top"
+        isShow={isShowToast}
+        onCLosed={closedHandler}
+      >
+        {addContactCtx.error
+          ? "Terjadi Kesalahan: " + addContactCtx?.error?.message
+          : "Contact Berhasil Ditambahkan"}
       </Toast>
     </StyledContainer>
   )
