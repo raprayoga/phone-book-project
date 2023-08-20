@@ -32,6 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <StyledButton
+        title={"Button " + variant}
         ref={ref}
         variant={variant}
         isDisabled={isDisabled}
