@@ -16,3 +16,9 @@ export const formRules = {
     message: "Maksimal Panjang Karakter " + number,
   }),
 }
+
+export const rulesPhone = {
+  pattern: formRules.phone,
+  minLength: formRules.minLenth(6),
+  maxLength: formRules.manLenth(18),
+}
