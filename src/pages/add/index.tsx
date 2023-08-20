@@ -6,6 +6,7 @@ import MobileHeaderOnly from "@/components/layouts/MobileHeaderOnly"
 import Desktop from "@/components/templates/Add/Desktop/Desktop"
 import Mobile from "@/components/templates/Add/Mobile/Mobile"
 import AddContactProvider from "@/stores/add-contact/AddContactContext"
+import DesktopLayout from "@/components/layouts/DesktopLayout"
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -20,7 +21,11 @@ export default function Page() {
 
   return (
     <AddContactProvider>
-      {!isMobile && <Desktop />}
+      {!isMobile && (
+        <DesktopLayout>
+          <Desktop />
+        </DesktopLayout>
+      )}
       {isMobile && (
         <MobileHeaderOnly title="Add New Contact">
           <Mobile />

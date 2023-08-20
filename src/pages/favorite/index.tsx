@@ -2,9 +2,9 @@ import React from "react"
 import { useIsMobile } from "@/hooks/useIsMobile"
 import { getIsSsrMobile } from "@/utils/mobile-detect"
 import { GetServerSidePropsContext } from "next"
-import MobileHeaderOnly from "@/components/layouts/MobileHeaderOnly"
 import Mobile from "@/components/templates/Favorite/Mobile/Mobile"
-import Desktop from "@/components/templates/Favorite/Desktop/Desktop"
+import MobileWithoutSearch from "@/components/layouts/MobileWithoutSearch"
+import { useRouter } from "next/router"
 
 export function getServerSideProps(context: GetServerSidePropsContext) {
   return {
@@ -19,11 +19,10 @@ export default function Page() {
 
   return (
     <>
-      {!isMobile && <Desktop />}
       {isMobile && (
-        <MobileHeaderOnly title="My Favorite">
+        <MobileWithoutSearch title="My Favorite">
           <Mobile />
-        </MobileHeaderOnly>
+        </MobileWithoutSearch>
       )}
     </>
   )

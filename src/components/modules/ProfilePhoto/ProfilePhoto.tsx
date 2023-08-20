@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import defaultProfile from "../../../assets/images/default-profile.svg"
+import defaultProfile from "@/assets/images/default-profile.svg"
 import { PhotoProfileContainer } from "./profile-photo-styling"
 
 function ProfilePhoto({

@@ -6,11 +6,13 @@ import {
   StyledErrorMessage,
   StyledInputContainer,
   StyledLabelForm,
-} from "../FormAdd/form-add-styling"
+} from "@/components/modules/FormAdd/form-add-styling"
 import DetailContactContext from "@/stores/detail-contact/detail-contact-context"
 import { useRouter } from "next/router"
 import { formRules, rulesPhone } from "@/utils/form-rules"
 import EditContactContext from "@/stores/edit-contact/edit-contact-context"
+import { getItemFromLocalStorage } from "@/utils/store-favorite"
+import { Contact } from "@/interfaces/contact"
 
 export type Inputs = {
   first_name: string
@@ -23,7 +25,7 @@ export interface FormProps {
   control: Control<Inputs, any>
 }
 
-function FormEdit() {
+function FormEdit(props: React.FormHTMLAttributes<HTMLFormElement>) {
   const editContactCtx = useContext(EditContactContext)
   const detailContactCtx = useContext(DetailContactContext)
   const router = useRouter()
@@ -31,7 +33,6 @@ function FormEdit() {
   const {
     control,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<Inputs>({
     mode: "onChange",
@@ -52,9 +53,24 @@ function FormEdit() {
           number: data.phone2,
         },
       ],
+      created_at: "",
     }
+    updateFavorite(variableQuery)
     editContactCtx.editItem(variableQuery)
-    reset({})
+  }
+
+  const updateFavorite = (variableQuery: Contact) => {
+    const favorites = getItemFromLocalStorage("favorites")
+    if (!favorites) return
+
+    const inFavoritesIndex = favorites.data.findIndex(
+      (favorite: Contact) => +favorite.id === variableQuery.id
+    )
+
+    if (inFavoritesIndex >= 0) {
+      favorites.data.splice(inFavoritesIndex, 1, variableQuery)
+      localStorage.setItem("favorites", JSON.stringify(favorites))
+    }
   }
 
   function getVariant(dirty: boolean, error: boolean) {
@@ -74,7 +90,7 @@ function FormEdit() {
 
   return (
     detailContactCtx.data && (
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form {...props} onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
           rules={{
@@ -146,7 +162,7 @@ function FormEdit() {
               <StyledLabelForm htmlFor="phone1">Number Phone 1</StyledLabelForm>
               <InputGroup id="phone1">
                 <Input
-                  placeholder="Enter Number Phone..."
+                  placeholder="Enter Number Phone 1..."
                   variant={getVariant(isDirty, !!error)}
                   onChange={onChange}
                   value={value}
@@ -172,7 +188,7 @@ function FormEdit() {
               <StyledLabelForm htmlFor="phone2">Number Phone 2</StyledLabelForm>
               <InputGroup id="phone2">
                 <Input
-                  placeholder="Enter Number Phone..."
+                  placeholder="Enter Number Phone 2..."
                   variant={getVariant(isDirty, !!error)}
                   onChange={onChange}
                   value={value}

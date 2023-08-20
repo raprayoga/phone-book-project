@@ -1,17 +1,13 @@
 import { ChildLeft, InputGroup } from "@/components/elements/InputGroup"
 import React from "react"
-import {
-  StyledInput,
-  StyledInputGroup,
-  StyledMagnifyingGlassIcon,
-} from "./input-search-styling"
+import { StyledInput, StyledMagnifyingGlassIcon } from "./input-search-styling"
 
 const InputSearch = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
 >((props, ref) => {
   return (
-    <StyledInputGroup>
+    <div>
       <InputGroup>
         <ChildLeft>
           <StyledMagnifyingGlassIcon />
@@ -23,7 +19,7 @@ const InputSearch = React.forwardRef<
           placeholder="Search Contact"
         />
       </InputGroup>
-    </StyledInputGroup>
+    </div>
   )
 })
 InputSearch.displayName = "InputSearch"

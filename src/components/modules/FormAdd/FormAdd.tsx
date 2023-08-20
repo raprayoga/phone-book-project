@@ -21,7 +21,7 @@ export interface FormProps {
   control: Control<Inputs, any>
 }
 
-function FormAdd() {
+function FormAdd(props: React.FormHTMLAttributes<HTMLFormElement>) {
   const addContactCtx = useContext(AddContactContext)
   const {
     control,
@@ -59,12 +59,13 @@ function FormAdd() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form {...props} onSubmit={handleSubmit(onSubmit)}>
       <Controller
         control={control}
         rules={{
           required: formRules.required,
         }}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -93,6 +94,7 @@ function FormAdd() {
         rules={{
           required: formRules.required,
         }}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -122,6 +124,7 @@ function FormAdd() {
           ...rulesPhone,
           required: formRules.required,
         }}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -130,7 +133,7 @@ function FormAdd() {
             <StyledLabelForm htmlFor="phone1">Number Phone 1</StyledLabelForm>
             <InputGroup id="phone1">
               <Input
-                placeholder="Enter Number Phone..."
+                placeholder="Enter Number Phone 1..."
                 variant={getVariant(isDirty, !!error)}
                 onBlur={onBlur}
                 onChange={onChange}
@@ -148,6 +151,7 @@ function FormAdd() {
       <Controller
         control={control}
         rules={rulesPhone}
+        defaultValue=""
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -156,7 +160,7 @@ function FormAdd() {
             <StyledLabelForm htmlFor="phone2">Number Phone 1</StyledLabelForm>
             <InputGroup id="phone2">
               <Input
-                placeholder="Enter Number Phone..."
+                placeholder="Enter Number Phone 2..."
                 variant={getVariant(isDirty, !!error)}
                 onBlur={onBlur}
                 onChange={onChange}

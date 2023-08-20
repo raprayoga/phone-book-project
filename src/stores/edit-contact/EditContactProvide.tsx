@@ -14,7 +14,6 @@ const EditContactProvider = ({ children }: { children: React.ReactNode }) => {
   ] = useMutation(UPDATE_PHONE_LIST)
 
   const editItemHandler = (query: any) => {
-    console.log(query)
     mutateContactFunction({
       variables: {
         id: query.id,
