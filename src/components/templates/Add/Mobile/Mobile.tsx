@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import Toast from "@/components/elements/Toast"
-import FormAdd from "@/components/modules/FormAdd/FormAdd"
+import FormAdd from "@/components/modules/FormAdd"
 import AddContactContext from "@/stores/add-contact/add-contact-context"
 import { StyledContainer } from "./mobile-styling"
 
