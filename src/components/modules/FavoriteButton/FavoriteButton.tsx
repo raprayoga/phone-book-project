@@ -36,7 +36,7 @@ function FavoriteButton({ contact }: { contact: Contact }) {
     console.log("CHECK FAV")
     if (favorites) {
       const inFavorites = favorites.data.find(
-        (favorite) => favorite.id === contact?.id
+        (favorite) => favorite?.id === contact?.id
       )
       setIsFavorite(!!inFavorites)
     } else {

@@ -38,7 +38,7 @@ const StyledToast = styled(Card)<ToastVariantProps>`
 
 const StyledClosedButton = styled(CloseOutlinedIcon)`
   position: absolute;
-  top: 0.5rem;
+  top: 0;
   right: 0.5rem;
   width: 1.25rem;
   cursor: pointer;

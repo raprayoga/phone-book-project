@@ -8,6 +8,7 @@ import {
   StyledInputContainer,
   StyledLabelForm,
 } from "./form-add-styling"
+import { formRules, rulesPhone } from "@/utils/form-rules"
 
 export type Inputs = {
   first_name: string
@@ -20,7 +21,8 @@ export interface FormProps {
   control: Control<Inputs, any>
 }
 
-export default function FormAdd() {
+function FormAdd() {
+  const addContactCtx = useContext(AddContactContext)
   const {
     control,
     handleSubmit,
@@ -30,8 +32,6 @@ export default function FormAdd() {
     mode: "onChange",
   })
 
-  const addContactCtx = useContext(AddContactContext)
-
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const variableQuery = {
       first_name: data.first_name,
@@ -40,10 +40,12 @@ export default function FormAdd() {
         {
           number: data.phone1,
         },
-        {
-          number: data.phone2,
-        },
       ],
+    }
+    if (data.phone2) {
+      variableQuery.phones.push({
+        number: data.phone2,
+      })
     }
     addContactCtx.addItem(variableQuery)
     reset()
@@ -61,7 +63,7 @@ export default function FormAdd() {
       <Controller
         control={control}
         rules={{
-          required: true,
+          required: formRules.required,
         }}
         render={({
           field: { onChange, onBlur, value },
@@ -89,7 +91,7 @@ export default function FormAdd() {
       <Controller
         control={control}
         rules={{
-          required: true,
+          required: formRules.required,
         }}
         render={({
           field: { onChange, onBlur, value },
@@ -99,7 +101,7 @@ export default function FormAdd() {
             <StyledLabelForm htmlFor="last_name">Last Name</StyledLabelForm>
             <InputGroup id="last_name">
               <Input
-                placeholder="Enter First Name..."
+                placeholder="Enter Last Name..."
                 variant={getVariant(isDirty, !!error)}
                 onBlur={onBlur}
                 onChange={onChange}
@@ -117,14 +119,8 @@ export default function FormAdd() {
       <Controller
         control={control}
         rules={{
-          required: true,
-          pattern: {
-            value:
-              /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
-            message: "Nomor Handphone Harus Sesuai Format",
-          },
-          minLength: 6,
-          maxLength: 18,
+          ...rulesPhone,
+          required: formRules.required,
         }}
         render={({
           field: { onChange, onBlur, value },
@@ -151,16 +147,7 @@ export default function FormAdd() {
 
       <Controller
         control={control}
-        rules={{
-          required: true,
-          pattern: {
-            value:
-              /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
-            message: "Nomor Handphone Harus Sesuai Format",
-          },
-          minLength: 6,
-          maxLength: 18,
-        }}
+        rules={rulesPhone}
         render={({
           field: { onChange, onBlur, value },
           fieldState: { isDirty, error },
@@ -184,7 +171,11 @@ export default function FormAdd() {
         name="phone2"
       />
 
-      <StyledButtonSubmit onClick={() => {}}>Add Contact</StyledButtonSubmit>
+      <StyledButtonSubmit isLoading={addContactCtx?.loading} onClick={() => {}}>
+        Add Contact
+      </StyledButtonSubmit>
     </form>
   )
 }
+
+export { FormAdd }
