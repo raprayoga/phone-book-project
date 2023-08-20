@@ -1,7 +1,10 @@
-import React, { useContext } from "react"
+import React from "react"
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled"
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined"
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined"
+import { useRouter } from "next/router"
+import waIcon from "../../../assets/images/wa-icon.svg"
+import Image from "next/image"
 import {
   DetailProfileContainer,
   StyledActionContainer,
@@ -9,15 +12,19 @@ import {
   StyledList,
   StyledPhoneIcon,
   StyledPhoneNumber,
-} from "./detail-profile-styling"
-import { useRouter } from "next/router"
-import waIcon from "../../../assets/images/wa-icon.svg"
-import Image from "next/image"
-import DeleteContactContext from "@/stores/delete-contact/delete-contact-context"
+} from "@/components/modules/DetailProfile/detail-profile-styling"
+import { Contact } from "@/interfaces/contact"
 
-function DetailProfile({ phones }: { phones?: { number: string }[] }) {
+function DetailProfile({
+  editHandler = () => null,
+  deleteHandler = () => null,
+  contact,
+}: {
+  editHandler: () => void
+  deleteHandler: () => void
+  contact: Contact
+}) {
   const router = useRouter()
-  const deleteContactCtx = useContext(DeleteContactContext)
 
   const callHandler = (phone: string) => {
     window.open(`tel:${phone}`)
@@ -29,18 +36,9 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
     )
   }
 
-  const editHandler = () => {
-    router.push(`/edit/${router.query.id}`)
-  }
-
-  const deleteHandler = () => {
-    deleteContactCtx.deleteItem(router.query.id)
-    router.back()
-  }
-
   return (
     <DetailProfileContainer>
-      {phones?.map((phone) => (
+      {contact?.phones?.map((phone) => (
         <StyledList key={phone.number}>
           <StyledPhoneNumber>
             <StyledPhoneIcon />
@@ -69,7 +67,7 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
         <StyledButton
           data-testid="editbutton-element"
           variant="warning"
-          onClick={() => editHandler()}
+          onClick={editHandler}
         >
           <BorderColorOutlinedIcon />
         </StyledButton>
@@ -77,7 +75,7 @@ function DetailProfile({ phones }: { phones?: { number: string }[] }) {
         <StyledButton
           variant="danger"
           data-testid="deletebutton-element"
-          onClick={() => deleteHandler()}
+          onClick={deleteHandler}
         >
           <DeleteOutlineOutlinedIcon />
         </StyledButton>
