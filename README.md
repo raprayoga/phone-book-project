@@ -38,7 +38,9 @@
 
 This application is a simple phonebook app, we can add, edit, delete, & save contact as favorite
 This application is consists of two UI design for mobile and desktop basedon "user-agent"
-This application is a technical test application for the hiring process at Tokopedia
+This application is a technical test application for the hiring process at Tokopedia.
+
+You can visit the app [here](https://www.linkedin.com/in/rafie-achmad-prayoga-8b1ba2192/) too.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
