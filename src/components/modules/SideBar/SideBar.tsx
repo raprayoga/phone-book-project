@@ -2,7 +2,8 @@ import React from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { StyledLinkMenu, StyledSidebar } from "./sidebar-styling"
-export default function SideBar() {
+
+function SideBar() {
   const router = useRouter()
 
   return (
@@ -16,3 +17,5 @@ export default function SideBar() {
     </StyledSidebar>
   )
 }
+
+export { SideBar }

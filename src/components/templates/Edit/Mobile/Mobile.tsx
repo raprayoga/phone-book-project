@@ -36,7 +36,7 @@ export default function Mobile() {
         onCLosed={closedHandler}
       >
         {ifResponseError()
-          ? "Terjadi Kesalahan: " + addContactCtx?.error?.message
+          ? "Terjadi Kesalahan: " + editContactCtx?.error?.message
           : "Contact Berhasil Ditambahkan"}
       </Toast>
     </StyledContainer>
