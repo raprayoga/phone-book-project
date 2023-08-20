@@ -20,6 +20,7 @@ import DeleteContactContext from "@/stores/delete-contact/delete-contact-context
 import DetailProfile from "@/components/modules/DetailProfile"
 import { useRouter } from "next/router"
 import ErrorFeedback from "@/components/modules/ErrorFeedback"
+import LoadingMobile from "@/components/modules/LoadingMobile"
 
 export default function Desktop() {
   const router = useRouter()
@@ -49,7 +50,6 @@ export default function Desktop() {
   }
 
   useEffect(() => {
-    contactListCtx.getItem({})
     getFavorite()
   }, [])
 
@@ -88,6 +88,8 @@ export default function Desktop() {
             />
           </StyledError>
         )}
+        {contactListCtx.loading &&
+          Array.from(Array(5)).map((e, index) => <LoadingMobile key={index} />)}
         {!contactListCtx.loading &&
           !contactListCtx.error &&
           contactListCtx.items.map((contact) => (
