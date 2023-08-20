@@ -6,6 +6,7 @@ import Link from "next/link"
 import { LoadingMobile } from "@/components/modules/LoadingMobile/LoadingMobile"
 import ErrorFeedback from "@/components/modules/ErrorFeedback"
 import AddButton from "@/components/modules/AddButton"
+import FavoriteHeadline from "@/components/modules/FavoriteHeadline"
 
 export default function Mobile() {
   const contactListCtx = useContext(ContactListContext)
@@ -14,13 +15,21 @@ export default function Mobile() {
     contactListCtx.getItem({})
   }, [])
 
+  const refetchHandler = () => {
+    contactListCtx.getItem({})
+  }
+
   return (
     <>
       <StyledContainer>
         <div>
+          <FavoriteHeadline />
           {contactListCtx.error && (
             <StyledError>
-              <ErrorFeedback caption="Terjadi Kesalahan, Silahkan Coba lagi" />
+              <ErrorFeedback
+                caption="Terjadi Kesalahan, Silahkan Coba lagi"
+                onClick={refetchHandler}
+              />
             </StyledError>
           )}
           {contactListCtx.loading &&
